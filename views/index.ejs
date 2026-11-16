@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineScope - Movie Explorer</title>
+
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+    <%- include('partials/header') %>
+
+    <div class="container">
+        <h1>Welcome to CineScope!</h1>
+
+        <p>Discover your next favorite movie.</p>
+
+        <form action="/search" method="post">
+            <input
+                type="text"
+                name="title"
+                placeholder="Search movies, actors, keywords..."
+                required
+            >
+
+            <select name="type">
+                <option value="">All types</option>
+                <option value="movie">Movies</option>
+                <option value="series">Series</option>
+                <option value="episode">Episodes</option>
+            </select>
+
+            <select name="genre">
+                <option value="">All genres</option>
+                <option value="Action">Action</option>
+                <option value="Adventure">Adventure</option>
+                <option value="Animation">Animation</option>
+                <option value="Comedy">Comedy</option>
+                <option value="Crime">Crime</option>
+                <option value="Drama">Drama</option>
+                <option value="Fantasy">Fantasy</option>
+                <option value="Horror">Horror</option>
+                <option value="Romance">Romance</option>
+                <option value="Sci-Fi">Sci-Fi</option>
+                <option value="Thriller">Thriller</option>
+            </select>
+
+            <input
+                type="number"
+                name="year"
+                placeholder="Release year"
+                min="1900"
+                max="2026"
+            >
+
+            <button type="submit">Search</button>
+        </form>
+
+        <% if (typeof error !== 'undefined' && error) { %>
+            <p class="error-message"><%= error %></p>
+        <% } %>
+
+    </div>
+
+    <%- include('partials/footer') %>
+
+</body>
+</html>
